@@ -30,7 +30,6 @@ public class Background{
 		update();
 		
 		
-		//urmom
 		
 		g2.drawImage(img, tx, null);
 		

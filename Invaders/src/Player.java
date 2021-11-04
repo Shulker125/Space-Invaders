@@ -16,6 +16,7 @@ public class Player {
 		y = 0;
 		//test
 	}
+	//hi
 	public Player(int x, int y) {
 		this.x = x;
 		this.y = y;
