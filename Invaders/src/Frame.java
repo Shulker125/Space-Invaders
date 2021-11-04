@@ -21,6 +21,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Enemy1 enemy1 = new Enemy1(50, 10);
 	Enemy2 enemy2 = new Enemy2(50, 90);
 	Enemy3 enemy3 = new Enemy3(50, 170);
+	Enemy4 enemy4 = new Enemy4(50, 250);
 
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -29,6 +30,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy1.paint(g);  
 		enemy2.paint(g);
 		enemy3.paint(g);
+		enemy4.paint(g);
 		 
 	} 
 	 
@@ -86,6 +88,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy1.move();
 		enemy2.move();
 		enemy3.move();
+		enemy4.move();
 	}
 
 	@Override
