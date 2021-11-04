@@ -14,7 +14,7 @@ public class Player {
 	public Player() {
 		x = 0;
 		y = 0;
-		//test 
+		//test
 	}
 	//hi
 	public Player(int x, int y) {
