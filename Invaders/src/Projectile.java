@@ -7,4 +7,7 @@ public class Projectile {
 		this.x = x;
 		this.y = y;
 	}
+	public void fire() {
+		y += v;
+	}
 }

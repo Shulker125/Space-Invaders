@@ -111,6 +111,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		else if (key == 65) {
 			player.v = 0;
 		}
+		if (key == 32) {
+			Projectile projectile = new Projectile(player.getX(), player.getY());
+			projectile.fire();
+		}
 	}
 
 	@Override
