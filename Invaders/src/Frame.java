@@ -33,7 +33,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public static void main(String[] arg) {
 		Frame f = new Frame();
 	} 
-	
+	 
 	public Frame() {
 		JFrame f = new JFrame("Space Invaders");
 		f.setSize(new Dimension(400, 600));
