@@ -25,7 +25,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		bg.paint(g);
 		player.paint(g);
 		enemy1.paint(g);  
-		//test
+		
 		
 		 
 	} 
