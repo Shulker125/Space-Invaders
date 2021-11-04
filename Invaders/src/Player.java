@@ -48,10 +48,10 @@ public class Player {
 		tx.scale(1, 1);
 	}
 	public void move() {
-		if (x > 0 && x < 300) {
+		if (x > 0 && x < 324) {
 			x += v;
 		}
-		if (x == 300) {
+		if (x == 324) {
 			x-=v;
 		}
 		else if (x == 0) {
