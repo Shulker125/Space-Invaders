@@ -18,7 +18,7 @@ public class Player {
 	public Player(int x, int y) {
 		this.x = x;
 		this.y = y;
-		img = getImage("/imgs/Player.gif");
+		img = getImage("/imgs/Player.png");
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y);
 	}
