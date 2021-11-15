@@ -35,7 +35,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy2.paint(g);
 		enemy3.paint(g);
 		enemy4.paint(g);
-		bullet.get(bulletNum).paint(g);
+		for (int i = 0; i < bulletNum; i++) {
+			bullet.get(i).paint(g);
+		}
+		
 		
 		 
 	} 
@@ -94,7 +97,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		repaint();
 		player.move();
-		bullet.get(bulletNum).fire();
+		for (int i = 0; i < bulletNum; i++) {
+			bullet.get(i).fire();
+		}
 		enemy1.move();
 		enemy2.move();
 		enemy3.move();
