@@ -20,7 +20,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//CREATE THE OBJECT (STEP 1)
 	Background 	bg 	= new Background(0, 0);
 	Player player = new Player(50, 400);
-	Enemy1 enemy1 = new Enemy1(50, 10);
+	ArrayList<Enemy1> enemy1 = new ArrayList(0);
 	Enemy2 enemy2 = new Enemy2(50, 90);
 	Enemy3 enemy3 = new Enemy3(50, 170);
 	Enemy4 enemy4 = new Enemy4(50, 250);
@@ -35,7 +35,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		super.paintComponent(g);
 		bg.paint(g);
 		player.paint(g);
-		enemy1.paint(g);
+		for (int i = 0; i < 5;  i++) {
+			enemy1.get(i).paint(g);
+		}
 		enemy2.paint(g);
 		enemy3.paint(g);
 		enemy4.paint(g);
@@ -51,6 +53,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	 
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
+		enemy1.add(new Enemy1(50, 10));
 		JFrame f = new JFrame("Space Invaders");
 		f.setSize(new Dimension(400, 600));
 		f.setBackground(Color.blue);
@@ -63,6 +66,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
+		for (int i = 0, x = 0; i < 5; i++, x+=60) {
+			enemy1.add(new Enemy1(x, 10));
+		}
 	}
 	
 	@Override
@@ -99,7 +105,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		for (int i = 0; i < bulletNum; i++) {
 			bullet.get(i).fire();
 		}
-		enemy1.move();
+		for (int i = 0; i < 5; i++) {
+			enemy1.get(i).move();
+		}
 		enemy2.move();
 		enemy3.move();
 		enemy4.move();
