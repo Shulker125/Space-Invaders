@@ -39,7 +39,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bullet.get(i).paint(g);
 		}
 		
-		
 		 
 	} 
 	 
@@ -110,7 +109,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-			System.out.println(arg0.getKeyCode());
+			//System.out.println(arg0.getKeyCode());
 			int key = arg0.getKeyCode();
 			if (key == 68) {
 				player.v = 2;
@@ -119,8 +118,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				player.v = -2;
 			}
 			if (key == 32) {
-				bullet.add(new Projectile(player.getX()-36, player.getY()));
 				bulletNum++;
+				bullet.add(new Projectile(player.getX()-36, player.getY()));
+				
 			}
 	}
 
