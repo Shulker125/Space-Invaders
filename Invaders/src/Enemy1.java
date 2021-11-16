@@ -25,7 +25,7 @@ public class Enemy1 {
 	}
 	private void update() {
 		tx.setToTranslation(x, y);
-		tx.scale(0.07, 0.07);
+		tx.scale(4.5, 4.5);
 	}
 	public int getX() { 
 		return x;

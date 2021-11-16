@@ -25,7 +25,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Enemy3 enemy3 = new Enemy3(50, 170);
 	Enemy4 enemy4 = new Enemy4(50, 250);
 	ArrayList<Projectile> bullet = new ArrayList<>(0);
-	public int bulletNum = 0;
+	public int bulletNum = 1;
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -38,7 +38,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		for (int i = 0; i < bulletNum; i++) {
 			bullet.get(i).paint(g);
 		}
-		
 		 
 	} 
 	 
@@ -61,8 +60,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-		
-		
 	}
 	
 	@Override
@@ -103,7 +100,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy2.move();
 		enemy3.move();
 		enemy4.move();
-		
 	}
 
 	@Override
@@ -118,10 +114,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				player.v = -2;
 			}
 			if (key == 32) {
-				bulletNum++;
 				bullet.add(new Projectile(player.getX()-36, player.getY()));
-				
+				bulletNum++;
 			}
+			
 	}
 
 	@Override
