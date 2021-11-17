@@ -129,24 +129,24 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 			//System.out.println(arg0.getKeyCode());
 			int key = arg0.getKeyCode();
-			if (key == 68) {
+			if (key == 68 || key == 39) {
 				player.v = 2;
 			}
-			else if (key == 65) {
+			else if (key == 65 || key == 37) {
 				player.v = -2;
 			}
 			
-			
+			System.out.println(key);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		int key = arg0.getKeyCode();
-		if (key == 68) {
+		if (key == 68 || key == 39) {
 			player.v = 0;
 		}
-		else if (key == 65) {
+		else if (key == 65 || key == 37) {
 			player.v = 0;
 		}
 		if (key == 32) {
