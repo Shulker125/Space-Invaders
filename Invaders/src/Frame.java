@@ -20,40 +20,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//CREATE THE OBJECT (STEP 1)
 	Background 	bg 	= new Background(0, 0);
 	Player player = new Player(50, 400);
-	ArrayList<Enemy1> enemy1 = new ArrayList(0);
-	Enemy2 enemy2 = new Enemy2(50, 90);
-	Enemy3 enemy3 = new Enemy3(50, 170);
-	Enemy4 enemy4 = new Enemy4(50, 250);
-	ArrayList<Projectile> bullet = new ArrayList<>(0);
+	ArrayList<Enemy1> enemy1 = new ArrayList<>(); 
+	ArrayList<Enemy2> enemy2 = new ArrayList<>();
+	ArrayList<Enemy3> enemy3 = new ArrayList<>();
+	ArrayList<Enemy4> enemy4 = new ArrayList<>();
+	ArrayList<Projectile> bullet = new ArrayList<>();
 	public int bulletNum = 1;
-	long start = System.currentTimeMillis();
+	public long start = System.currentTimeMillis();
+	public boolean init = false;
 	
-	
-	
-	public void paint(Graphics g) {
-		
-		super.paintComponent(g);
-		bg.paint(g);
-		player.paint(g);
-		for (int i = 0; i < 5;  i++) {
-			enemy1.get(i).paint(g);
-		}
-		enemy2.paint(g);
-		enemy3.paint(g);
-		enemy4.paint(g);
-		for (int i = 0; i < bulletNum; i++) {
-			bullet.get(i).paint(g);
-		}
-	} 
-	 
-	public static void main(String[] arg) {
-		Frame f = new Frame();
-		
-	} 
-	 
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
-		enemy1.add(new Enemy1(50, 10));
 		JFrame f = new JFrame("Space Invaders");
 		f.setSize(new Dimension(400, 600));
 		f.setBackground(Color.blue);
@@ -68,8 +45,35 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setVisible(true);
 		for (int i = 0, x = 0; i < 5; i++, x+=60) {
 			enemy1.add(new Enemy1(x, 10));
+			enemy2.add(new Enemy2(x, 90));
+			enemy3.add(new Enemy3(x, 170));
+			enemy4.add(new Enemy4(x, 250));
 		}
+		init = true;
 	}
+	
+	public void paint(Graphics g) {
+		
+		super.paintComponent(g);
+		bg.paint(g);
+		player.paint(g);
+		for (int i = 0; i < 5;  i++) {
+			enemy1.get(i).paint(g);
+			enemy2.get(i).paint(g);
+			enemy3.get(i).paint(g);
+			enemy4.get(i).paint(g);
+		}
+		for (int i = 0; i < bulletNum; i++) {
+			bullet.get(i).paint(g);
+		}
+	} 
+	 
+	public static void main(String[] arg) {
+		Frame f = new Frame();
+		
+	} 
+	 
+	
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
@@ -105,12 +109,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		for (int i = 0; i < bulletNum; i++) {
 			bullet.get(i).fire();
 		}
-		for (int i = 0; i < 5; i++) {
-			enemy1.get(i).move();
+		if (init) {
+			for (int i = 0; i < 5; i++) {
+				enemy1.get(i).move();
+				enemy2.get(i).move();
+				enemy3.get(i).move();
+				enemy4.get(i).move();
+			}
 		}
-		enemy2.move();
-		enemy3.move();
-		enemy4.move();
 	}
 
 	@Override
@@ -141,7 +147,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if (key == 32) {
 			long time = System.currentTimeMillis()-start;
 			System.out.println(time);
-			if (time > 0 && time < 200) {
+			if (time > 0 && time < 400) {
 				bullet.add(new Projectile(player.getX()-36, player.getY()));
 				bulletNum++;
 			}
