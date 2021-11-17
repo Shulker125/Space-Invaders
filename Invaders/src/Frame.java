@@ -29,7 +29,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public long start = System.currentTimeMillis();
 	public boolean init = false;
 	public int maxBullet = 0;
-	public int index = 0;
+	public int index1, index2, index3, index4;
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
@@ -60,18 +60,54 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		bg.paint(g);
 		player.paint(g);
 		if (init) {
-			for (int i = 0; i < 5-index;  i++) {
+			for (int i = 0; i < 5-index1;  i++) {
 				enemy1.get(i).paint(g);
-				enemy2.get(i).paint(g);
-				enemy3.get(i).paint(g);
-				enemy4.get(i).paint(g);
 				for (int x = 0; x < bulletNum; x++) {
-					if (bullet.get(x).getY() == enemy1.get(i).getY()) {
-						enemy1.remove(i);
-						index++;
+					if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
+						if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
+							enemy1.remove(i);
+							index1++;
+						}
 					}
 				}
 			}
+			for (int i = 0; i < 5-index2;  i++) {
+				enemy2.get(i).paint(g);
+				for (int x = 0; x < bulletNum; x++) {
+					if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
+						if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
+							enemy2.remove(i);
+							index2++;
+						}
+						
+					}
+				}
+			}
+			for (int i = 0; i < 5-index3;  i++) {
+				enemy3.get(i).paint(g);
+				for (int x = 0; x < bulletNum; x++) {
+					if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
+						if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
+							enemy3.remove(i);
+							index3++;
+						}
+						
+					}
+				}
+			}
+			for (int i = 0; i < 5-index4;  i++) {
+				enemy4.get(i).paint(g);
+				for (int x = 0; x < bulletNum; x++) {
+					if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
+						if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
+							enemy4.remove(i);
+							index4++;
+						}
+						
+					}
+				}
+			}
+			
 		}
 		
 		for (int i = 0; i < bulletNum; i++) {
@@ -121,10 +157,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bullet.get(i).fire();
 		}
 		if (init) {
-			for (int i = 0; i < 5-index; i++) {
+			for (int i = 0; i < 5-index1; i++) {
 				enemy1.get(i).move();
+			}
+			for (int i = 0; i < 5-index2; i++) {
 				enemy2.get(i).move();
+			}
+			for (int i = 0; i < 5-index3; i++) {
 				enemy3.get(i).move();
+			}
+			for (int i = 0; i < 5-index4; i++) {
 				enemy4.get(i).move();
 			}
 			
@@ -143,7 +185,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				player.v = -2;
 			}
 			
-			System.out.println(key);
 	}
 
 	@Override
@@ -168,7 +209,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				start = System.currentTimeMillis();
 				maxBullet = 0;
 			}
-			System.out.println(time);
 			
 		}
 	}
