@@ -29,6 +29,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public long start = System.currentTimeMillis();
 	public boolean init = false;
 	public int maxBullet = 0;
+	public int index = 0;
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
@@ -59,11 +60,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		bg.paint(g);
 		player.paint(g);
 		if (init) {
-			for (int i = 0; i < 5;  i++) {
+			for (int i = 0; i < 5-index;  i++) {
 				enemy1.get(i).paint(g);
 				enemy2.get(i).paint(g);
 				enemy3.get(i).paint(g);
 				enemy4.get(i).paint(g);
+				for (int x = 0; x < bulletNum; x++) {
+					if (bullet.get(x).getY() == enemy1.get(i).getY()) {
+						enemy1.remove(i);
+						index++;
+					}
+				}
 			}
 		}
 		
@@ -114,7 +121,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			bullet.get(i).fire();
 		}
 		if (init) {
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 5-index; i++) {
 				enemy1.get(i).move();
 				enemy2.get(i).move();
 				enemy3.get(i).move();
