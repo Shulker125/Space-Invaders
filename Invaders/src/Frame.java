@@ -28,6 +28,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
 	public boolean init = false;
+	public int maxBullet = 0;
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
@@ -57,12 +58,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		super.paintComponent(g);
 		bg.paint(g);
 		player.paint(g);
-		for (int i = 0; i < 5;  i++) {
-			enemy1.get(i).paint(g);
-			enemy2.get(i).paint(g);
-			enemy3.get(i).paint(g);
-			enemy4.get(i).paint(g);
+		if (init) {
+			for (int i = 0; i < 5;  i++) {
+				enemy1.get(i).paint(g);
+				enemy2.get(i).paint(g);
+				enemy3.get(i).paint(g);
+				enemy4.get(i).paint(g);
+			}
 		}
+		
 		for (int i = 0; i < bulletNum; i++) {
 			bullet.get(i).paint(g);
 		}
@@ -116,6 +120,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				enemy3.get(i).move();
 				enemy4.get(i).move();
 			}
+			
 		}
 	}
 
@@ -146,14 +151,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		if (key == 32) {
 			long time = System.currentTimeMillis()-start;
-			System.out.println(time);
-			if (time > 0 && time < 400) {
+			
+			if (maxBullet < 1) {
 				bullet.add(new Projectile(player.getX()-36, player.getY()));
 				bulletNum++;
+				maxBullet++;
 			}
 			if (time >= 1000) {
 				start = System.currentTimeMillis();
+				maxBullet = 0;
 			}
+			System.out.println(time);
 			
 		}
 	}
