@@ -60,54 +60,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		bg.paint(g);
 		player.paint(g);
 		if (init) {
-			for (int i = 0; i < 5-index1;  i++) {
-				enemy1.get(i).paint(g);
-				for (int x = 0; x < bulletNum; x++) {
-					if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
-						if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
-							enemy1.remove(i);
-							index1++;
-						}
-					}
-				}
-			}
-			for (int i = 0; i < 5-index2;  i++) {
-				enemy2.get(i).paint(g);
-				for (int x = 0; x < bulletNum; x++) {
-					if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
-						if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
-							enemy2.remove(i);
-							index2++;
-						}
-						
-					}
-				}
-			}
-			for (int i = 0; i < 5-index3;  i++) {
-				enemy3.get(i).paint(g);
-				for (int x = 0; x < bulletNum; x++) {
-					if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
-						if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
-							enemy3.remove(i);
-							index3++;
-						}
-						
-					}
-				}
-			}
-			for (int i = 0; i < 5-index4;  i++) {
-				enemy4.get(i).paint(g);
-				for (int x = 0; x < bulletNum; x++) {
-					if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
-						if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
-							enemy4.remove(i);
-							index4++;
-						}
-						
-					}
-				}
-			}
-			
+			paint1(g);
+			paint2(g);
+			paint3(g);
+			paint4(g);
 		}
 		
 		for (int i = 0; i < bulletNum; i++) {
@@ -217,6 +173,61 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void paint1(Graphics g) {
+		for (int i = 0; i < 5-index1;  i++) {
+			enemy1.get(i).paint(g);
+			for (int x = 0; x < bulletNum; x++) {
+				if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
+					if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
+						enemy1.remove(i);
+						index1++;
+					}
+				}
+			}
+		}
+	}
+	public void paint2(Graphics g) {
+		for (int i = 0; i < 5-index2;  i++) {
+			enemy2.get(i).paint(g);
+			for (int x = 0; x < bulletNum; x++) {
+				if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
+					if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
+						enemy2.remove(i);
+						index2++;
+					}
+					
+				}
+			}
+		}
+	}
+	public void paint3(Graphics g) {
+		for (int i = 0; i < 5-index3;  i++) {
+			enemy3.get(i).paint(g);
+			for (int x = 0; x < bulletNum; x++) {
+				if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
+					if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
+						enemy3.remove(i);
+						index3++;
+					}
+					
+				}
+			}
+		}
+	}
+	public void paint4(Graphics g) {
+		for (int i = 0; i < 5-index4;  i++) {
+			enemy4.get(i).paint(g);
+			for (int x = 0; x < bulletNum; x++) {
+				if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
+					if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
+						enemy4.remove(i);
+						index4++;
+					}
+					
+				}
+			}
+		}
 	}
 
 }
