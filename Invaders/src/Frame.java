@@ -25,6 +25,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Enemy3> enemy3 = new ArrayList<>();
 	ArrayList<Enemy4> enemy4 = new ArrayList<>();
 	ArrayList<Projectile> bullet = new ArrayList<>();
+	Music impact = new Music("impact_sound.wav", false);
 	Music fire = new Music("ship_sound.wav", false);
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
@@ -159,6 +160,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			
 			if (maxBullet < 1) {
 				bullet.add(new Projectile(player.getX()-36, player.getY()));
+				fire.play();
 				bulletNum++;
 				maxBullet++;
 			}
@@ -181,7 +183,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int x = 0; x < bulletNum; x++) {
 				if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
 					if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
-						fire.play();
+						impact.play();
 						enemy1.remove(i);
 						index1++;
 					}
@@ -195,7 +197,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int x = 0; x < bulletNum; x++) {
 				if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
 					if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
-						fire.play();
+						impact.play();
 						enemy2.remove(i);
 						index2++;
 					}
@@ -210,7 +212,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int x = 0; x < bulletNum; x++) {
 				if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
 					if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
-						fire.play();
+						impact.play();
 						enemy3.remove(i);
 						index3++;
 					}
@@ -225,7 +227,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int x = 0; x < bulletNum; x++) {
 				if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
 					if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
-						fire.play();
+						impact.play();
 						enemy4.remove(i);
 						index4++;
 					}
