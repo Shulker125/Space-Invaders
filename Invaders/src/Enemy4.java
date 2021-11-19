@@ -7,7 +7,7 @@ import java.net.URL;
 
 public class Enemy4 {
 	private int x, y;
-	private int v = 1;
+	private static int v = 1;
 	private Image img;
 	private AffineTransform tx;
 	
