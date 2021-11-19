@@ -32,6 +32,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Music fire = new Music("ship_sound.wav", false);
 	Music gameOver = new Music("gameover_sound.wav", false);
 	Music levelUp = new Music("levelup_sound.wav", false);
+	Music music = new Music("background_sound.wav", false);
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
 	public long timeStart = start;
@@ -96,6 +97,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int i = 0; i < bullet.size(); i++) {
 				bullet.get(i).paint(g);
 			}
+			music.start();
+		}
+		if (!music.isPlaying() && init) {
+			music.play();
 		}
 		if (hit) {
 			bullet.remove(indexRemove);
