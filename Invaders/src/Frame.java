@@ -30,17 +30,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Projectile> bullet = new ArrayList<>();
 	Music impact = new Music("impact_sound.wav", false);
 	Music fire = new Music("ship_sound.wav", false);
+	Music gameOver = new Music("gameover_sound.wav", false);
+	Music levelUp = new Music("levelup_sound.wav", false);
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
 	public long timeStart = start;
 	public boolean init = false;
 	public boolean hit = false;
+	public boolean firstStart = true;
 	public int maxBullet = 0;
 	public int score = 0;
 	public int index1, index2, index3, index4, indexRemove;
 	public int totalTime = 60;
 	public int time = totalTime;
 	public int increment = 1000;
+	public int isGameOver = 0;
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
@@ -63,6 +67,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			enemy4.add(new Enemy4(x, 250));
 		}
 		init = true;
+		firstStart = false;
 	}
 	
 	public void paint(Graphics g) {
@@ -100,6 +105,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.setColor(white);
 			g.drawString("Game Over!", 110, 200);
 			g.drawString("Click R to Respawn", 30, 250);
+			while (isGameOver < 1 && !firstStart) {
+				gameOver.play();
+				isGameOver++;
+			}
+			
 		}
 		
 	} 
@@ -314,6 +324,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		init = true;
 	}
 	public void nextStage() {
+		levelUp.play();
 		bulletNum = 1;
 		hit = false;
 		maxBullet = 0;
@@ -338,6 +349,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			enemy4.add(new Enemy4(x, 250));
 		}
 		bullet.add(new Projectile(-5, -5));
+		
 	}
 	public void updateTime() {
 		long currentTime = System.currentTimeMillis() - timeStart;
