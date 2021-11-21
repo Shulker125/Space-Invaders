@@ -74,6 +74,9 @@ public class Music  implements Runnable  {
 	public void run() {
 		 audioClip.start();
 	}
+	public void stop() {
+		audioClip.stop();
+	}
 	public boolean isPlaying() {
 		if (audioClip.isActive()) {
 			return true;
