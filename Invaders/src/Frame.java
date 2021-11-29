@@ -86,7 +86,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			title.paint(g);
 			g.setColor(white);
 			g.setFont(new Font("Monospaced", Font.BOLD, 30));
-			g.drawString("Click R to Start!", 40, 290);
+			g.drawString("Click R to Start!", 40, 250);
+			g.setFont(new Font("Monospaced", Font.BOLD, 15));
+			g.drawString("WASD/Arrow Keys to move, Space to fire", 16, 280);
 		}
 		g.setColor(black);
 		g.setFont(new Font("Monospaced", Font.BOLD, 30));

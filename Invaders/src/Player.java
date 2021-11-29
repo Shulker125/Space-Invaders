@@ -48,13 +48,13 @@ public class Player {
 		tx.scale(1, 1);
 	}
 	public void move() {
-		if (x > -12 && x < 324) {
+		if (x > -13 && x < 323) {
 			x += v;
 		}
-		if (x == 324) {
+		if (x == 323) {
 			x-=v;
 		}
-		else if (x == -12) {
+		else if (x == -13) {
 			x-=v;
 		}
 	}
