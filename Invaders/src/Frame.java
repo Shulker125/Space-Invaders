@@ -3,13 +3,16 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -20,7 +23,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//CREATE THE OBJECT (STEP 1)
 	Background 	bg 	= new Background(0, 0);
-	Player player = new Player(50, 400);
+	Player player = new Player(155, 400);
+	Title title = new Title(15, 100);
 	Color black = new Color(0, 0, 0);
 	Color white = new Color(255, 255, 255);
 	ArrayList<Enemy1> enemy1 = new ArrayList<>(); 
@@ -50,10 +54,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
 		JFrame f = new JFrame("Universe Marauders");
-		f.setSize(new Dimension(400, 600));
+		f.setSize(new Dimension(390, 593));
 		f.setBackground(Color.blue);
 		f.add(this);
-		f.setResizable(true);
+		f.setResizable(false);
 		f.setLayout(new GridLayout(1,2));
 		f.addMouseListener(this);
 		f.addKeyListener(this);
@@ -61,14 +65,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-		for (int i = 0, x = 0; i < 5; i++, x+=60) {
-			enemy1.add(new Enemy1(x, 10));
-			enemy2.add(new Enemy2(x, 90));
-			enemy3.add(new Enemy3(x, 170));
-			enemy4.add(new Enemy4(x, 250));
-		}
 		init = true;
-		firstStart = false;
 	}
 	
 	public void paint(Graphics g) {
@@ -79,17 +76,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		else {
 			init = false;
 		}
-		if (stageClear() && init) {
+		if (stageClear() && init && !firstStart) {
 			calculateTimeScore();
 			nextStage();
 		}
 		bg.paint(g);
 		player.paint(g);
+		if (firstStart) {
+			title.paint(g);
+			g.setColor(white);
+			g.setFont(new Font("Monospaced", Font.BOLD, 30));
+			g.drawString("Click R to Start!", 40, 290);
+		}
 		g.setColor(black);
 		g.setFont(new Font("Monospaced", Font.BOLD, 30));
 		g.drawString("Score:"+score, 125, 500);
 		g.drawString("Time:"+time, 125, 550);
-		if (init) {
+		if (init && !firstStart) {
 			paint1(g);
 			paint2(g);
 			paint3(g);
@@ -98,7 +101,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				bullet.get(i).paint(g);
 			}
 		}
-		if (!music.isPlaying() && init) {
+		if (!music.isPlaying() && init && !firstStart) {
 			music.play();
 		}
 		if (hit) {
@@ -155,7 +158,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		repaint();
-		if (init) {
+		if (init && !firstStart) {
 			player.move();
 			for (int i = 0; i < 5-index1; i++) {
 				enemy1.get(i).move();
@@ -179,7 +182,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-			System.out.println(arg0.getKeyCode());
 			int key = arg0.getKeyCode();
 			if (key == 68 || key == 39) {
 				player.v = 2;
@@ -189,6 +191,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 			if (!init && key == 82) {
 				reset();
+			}
+			if (firstStart && key == 82) {
+				for (int i = 0, x = 0; i < 5; i++, x+=60) {
+					enemy1.add(new Enemy1(x, 10));
+					enemy2.add(new Enemy2(x, 90));
+					enemy3.add(new Enemy3(x, 170));
+					enemy4.add(new Enemy4(x, 250));
+					firstStart = false;
+				}
 			}
 	}
 
@@ -202,7 +213,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		else if (key == 65 || key == 37) {
 			player.v = 0;
 		}
-		if (key == 32 && init) {
+		if (key == 32 && init && !firstStart) {
 			long time = System.currentTimeMillis()-start;
 			
 			if (maxBullet < 1) {
