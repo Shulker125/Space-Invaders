@@ -27,7 +27,7 @@ public class Music  implements Runnable  {
 	        audioClip = (Clip) AudioSystem.getLine(info);
 	        
 	        if(loops) {
-	        	audioClip.loop(audioClip.LOOP_CONTINUOUSLY);;
+	        	audioClip.loop(audioClip.LOOP_CONTINUOUSLY);
 	        }	        
 	        audioClip.open(audioStream);
 	        //audioClip.start();
@@ -73,6 +73,9 @@ public class Music  implements Runnable  {
 	@Override
 	public void run() {
 		 audioClip.start();
+	}
+	public void loop() {
+		audioClip.loop(audioClip.LOOP_CONTINUOUSLY);
 	}
 	public void stop() {
 		audioClip.stop();

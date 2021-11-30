@@ -36,7 +36,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Music fire = new Music("ship_sound.wav", false);
 	Music gameOver = new Music("gameover_sound.wav", false);
 	Music levelUp = new Music("levelup_sound.wav", false);
-	Music music = new Music("background-sound.wav", false);
+	Music music = new Music("background-sound.wav", true);
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
 	public long timeStart = start;
@@ -102,9 +102,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int i = 0; i < bullet.size(); i++) {
 				bullet.get(i).paint(g);
 			}
-		}
-		if (!music.isPlaying() && init && !firstStart) {
-			music.play();
 		}
 		if (hit) {
 			bullet.remove(indexRemove);
@@ -195,13 +192,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				reset();
 			}
 			if (firstStart && key == 82) {
-				for (int i = 0, x = 0; i < 5; i++, x+=60) {
-					enemy1.add(new Enemy1(x, 10));
-					enemy2.add(new Enemy2(x, 90));
-					enemy3.add(new Enemy3(x, 170));
-					enemy4.add(new Enemy4(x, 250));
-					firstStart = false;
-				}
+				reset();
+				firstStart = false;
 			}
 	}
 
@@ -315,10 +307,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		return false;
 	}
 	public void reset() {
+		music.loop();
 		score = 0;
 		bulletNum = 1;
 		hit = false;
 		maxBullet = 0;
+		isGameOver = 0;
 		index1 = 0;
 		index2 = 0;
 		index3 = 0;
