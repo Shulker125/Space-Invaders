@@ -230,75 +230,99 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	}
 	public void paint1(Graphics g) {
-		for (int i = 0; i < 5-index1;  i++) {
-			enemy1.get(i).paint(g);
-			for (int x = 0; x < bullet.size(); x++) {
-				if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
-					if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
-						impact.play();
-						indexRemove = x;
-						hit = true;
-						enemy1.remove(i);
-						index1++;
-						score+=5;
+		try {
+			for (int i = 0; i < 5-index1;  i++) {
+				enemy1.get(i).paint(g);
+				for (int x = 0; x < bullet.size(); x++) {
+					if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
+						if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
+							impact.play();
+							indexRemove = x;
+							hit = true;
+							enemy1.remove(i);
+							index1++;
+							score+=5;
+						}
 					}
 				}
 			}
 		}
+		catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	public void paint2(Graphics g) {
-		for (int i = 0; i < 5-index2;  i++) {
-			enemy2.get(i).paint(g);
-			for (int x = 0; x < bullet.size(); x++) {
-				if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
-					if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
-						impact.play();
-						indexRemove = x;
-						hit = true;
-						enemy2.remove(i);
-						index2++;
-						score+=4;
+		try {
+			for (int i = 0; i < 5-index2;  i++) {
+				enemy2.get(i).paint(g);
+				for (int x = 0; x < bullet.size(); x++) {
+					if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
+						if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
+							impact.play();
+							indexRemove = x;
+							hit = true;
+							enemy2.remove(i);
+							index2++;
+							score+=4;
+						}
+						
 					}
-					
 				}
 			}
 		}
+		catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	public void paint3(Graphics g) {
-		for (int i = 0; i < 5-index3;  i++) {
-			enemy3.get(i).paint(g);
-			for (int x = 0; x < bullet.size(); x++) {
-				if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
-					if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
-						impact.play();
-						indexRemove = x;
-						hit = true;
-						enemy3.remove(i);
-						index3++;
-						score+=3;
+		try {
+			for (int i = 0; i < 5-index3;  i++) {
+				enemy3.get(i).paint(g);
+				for (int x = 0; x < bullet.size(); x++) {
+					if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
+						if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
+							impact.play();
+							indexRemove = x;
+							hit = true;
+							enemy3.remove(i);
+							index3++;
+							score+=3;
+						}
+						
 					}
-					
 				}
 			}
 		}
+		catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	public void paint4(Graphics g) {
-		for (int i = 0; i < 5-index4;  i++) {
-			enemy4.get(i).paint(g);
-			for (int x = 0; x < bullet.size(); x++) {
-				if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
-					if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
-						impact.play();
-						indexRemove = x;
-						hit = true;
-						enemy4.remove(i);
-						index4++;
-						score+=2;
+		try {
+			for (int i = 0; i < 5-index4;  i++) {
+				enemy4.get(i).paint(g);
+				for (int x = 0; x < bullet.size(); x++) {
+					if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
+						if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
+							impact.play();
+							indexRemove = x;
+							hit = true;
+							enemy4.remove(i);
+							index4++;
+							score+=2;
+						}
+						
 					}
-					
 				}
 			}
 		}
+		catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	public boolean stageClear() {
 		if (enemy1.size() == 0 && enemy2.size() == 0 && enemy3.size() == 0 && enemy4.size() == 0) {
