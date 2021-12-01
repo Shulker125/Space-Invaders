@@ -67,7 +67,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setVisible(true);
 		init = true;
 	}
-	//hi
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
