@@ -54,7 +54,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
 		JFrame f = new JFrame("Universe Marauders");
-		f.setSize(new Dimension(390, 593));
+		f.setSize(new Dimension(390, 585));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);
