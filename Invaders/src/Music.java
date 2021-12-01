@@ -9,6 +9,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Music  implements Runnable  {
@@ -75,10 +76,27 @@ public class Music  implements Runnable  {
 		 audioClip.start();
 	}
 	public void loop() {
+		reset();
 		audioClip.loop(audioClip.LOOP_CONTINUOUSLY);
 	}
 	public void stop() {
 		audioClip.stop();
+	}
+	public void reset() {
+		audioFile = new File(fn);
+		try {
+			audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+	        DataLine.Info info = new DataLine.Info(Clip.class, format);
+	        audioClip = (Clip) AudioSystem.getLine(info);
+	        audioClip.open(audioStream);
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public boolean isPlaying() {
 		if (audioClip.isActive()) {
