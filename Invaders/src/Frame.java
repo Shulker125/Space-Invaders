@@ -247,9 +247,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}
+		catch (IndexOutOfBoundsException ignore) {}
 		
 	}
 	public void paint2(Graphics g) {
@@ -271,9 +269,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}
+		catch (IndexOutOfBoundsException ignore) {}
 		
 	}
 	public void paint3(Graphics g) {
@@ -295,9 +291,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}
+		catch (IndexOutOfBoundsException ignore) {}
 		
 	}
 	public void paint4(Graphics g) {
@@ -319,9 +313,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}
+		catch (IndexOutOfBoundsException ignore) {}
 		
 	}
 	public boolean stageClear() {
