@@ -37,6 +37,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Music gameOver = new Music("gameover_sound.wav", false);
 	Music levelUp = new Music("levelup_sound.wav", false);
 	Music music = new Music("background-sound.wav", true);
+	public String check = "Hello";
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
 	public long timeStart = start;
