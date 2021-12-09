@@ -12,9 +12,10 @@ public class Background{
 	//add location attributes
 	private Image img; 	
 	private AffineTransform tx;
-
+	private String[] stage = {"/imgs/bg.png", "/imgs/bg2.png", "/imgs/bg3.png", "/imgs/bg4.png"};
+	private int stageNum = 0;
 	public Background(int x, int y) {
-		img = getImage("/imgs/bg.png"); //load the image for Tree
+		img = getImage(stage[stageNum]); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 				//initialize the location of the image
 									//use your variables
@@ -57,6 +58,22 @@ public class Background{
 			e.printStackTrace();
 		}
 		return tempImage;
+	}
+	public void changeImage() {
+		try {
+			if (stageNum < 4) {
+				stageNum++;
+			}
+			else {
+				stageNum = 0;
+			}
+		}
+		catch (ArrayIndexOutOfBoundsException ignore) {}
+		img = getImage(stage[stageNum]);
+	}
+	public void resetBg() {
+		stageNum = 0;
+		img = getImage(stage[stageNum]);
 	}
 
 }

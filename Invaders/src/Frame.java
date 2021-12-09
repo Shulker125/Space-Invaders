@@ -93,7 +93,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		g.setColor(black);
 		g.setFont(new Font("Monospaced", Font.BOLD, 30));
-		g.drawString("Score:"+score, 125, 500);
+		g.drawString("Score:"+score, 115, 500);
 		g.drawString("Time:"+time, 125, 550);
 		if (init && !firstStart) {
 			paint1(g);
@@ -325,6 +325,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	public void reset() {
 		music.loop();
+		bg.resetBg();
 		score = 0;
 		bulletNum = 1;
 		hit = false;
@@ -354,6 +355,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	public void nextStage() {
 		levelUp.play();
+		bg.changeImage();
 		bulletNum = 1;
 		hit = false;
 		maxBullet = 0;
