@@ -437,7 +437,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	public boolean collide() {
 		for (int i = 0; i < enemyBullet.size(); i++) {
-			if (enemyBullet.get(i).getX()+65 >= player.getX()+20 && enemyBullet.get(i).getX()+75 <= player.getX()+50) {
+			if (enemyBullet.get(i).getX()+65 >= player.getX()+15 && enemyBullet.get(i).getX()+75 <= player.getX()+55) {
 				if (enemyBullet.get(i).getY()+10 >= player.getY()+10 && enemyBullet.get(i).getY()+20 <= player.getY()+60) {
 					return true;
 				}
