@@ -51,11 +51,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public int time = totalTime;
 	public int increment = 1000;
 	public int isGameOver = 0;
+	public int stageNum = 1;
+	public boolean isStageDisplayed = false;
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
 		JFrame f = new JFrame("Universe Marauders");
-		f.setSize(new Dimension(390, 585));
+		f.setSize(new Dimension(390, 600));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);
@@ -77,7 +79,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		else {
 			init = false;
 		}
-		if (stageClear() && init && !firstStart) {
+		if (stageClear() && init && !firstStart && !isStageDisplayed) {
 			calculateTimeScore();
 			nextStage();
 		}
@@ -91,11 +93,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.setFont(new Font("Monospaced", Font.BOLD, 15));
 			g.drawString("WASD/Arrow Keys to move, Space to fire", 16, 280);
 		}
+		if (isStageDisplayed) {
+			displayStage();
+			g.setColor(white);
+			g.setFont(new Font("Monospaced", Font.BOLD, 30));
+			g.drawString("Stage " + stageNum, 130, 250);
+		}
 		g.setColor(black);
 		g.setFont(new Font("Monospaced", Font.BOLD, 30));
 		g.drawString("Score:"+score, 115, 500);
 		g.drawString("Time:"+time, 125, 550);
-		if (init && !firstStart) {
+		if (init && !firstStart && !isStageDisplayed) {
 			paint1(g);
 			paint2(g);
 			paint3(g);
@@ -158,7 +166,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		repaint();
-		if (init && !firstStart) {
+		if (init && !firstStart && !isStageDisplayed) {
 			player.move();
 			for (int i = 0; i < 5-index1; i++) {
 				enemy1.get(i).move();
@@ -193,6 +201,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				reset();
 			}
 			if (firstStart && key == 82) {
+				isStageDisplayed = true;
+				timeStart = System.currentTimeMillis();
 				reset();
 				firstStart = false;
 			}
@@ -208,7 +218,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		else if (key == 65 || key == 37) {
 			player.v = 0;
 		}
-		if (key == 32 && init && !firstStart) {
+		if (key == 32 && init && !firstStart && !isStageDisplayed) {
 			long time = System.currentTimeMillis()-start;
 			
 			if (maxBullet < 1) {
@@ -324,6 +334,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		return false;
 	}
 	public void reset() {
+		timeStart = System.currentTimeMillis();
+		isStageDisplayed = true;
 		music.loop();
 		bg.resetBg();
 		score = 0;
@@ -336,26 +348,24 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index3 = 0;
 		index4 = 0;
 		time = 60;
+		totalTime = 60;
+		stageNum = 1;
 		bullet.clear();
 		enemy1.clear();
 		enemy2.clear();
 		enemy3.clear();
 		enemy4.clear();
-		start = System.currentTimeMillis();
-		timeStart = System.currentTimeMillis();
 		increment = 1000;
-		for (int i = 0, x = 0; i < 5; i++, x+=60) {
-			enemy1.add(new Enemy1(x, 10));
-			enemy2.add(new Enemy2(x, 90));
-			enemy3.add(new Enemy3(x, 170));
-			enemy4.add(new Enemy4(x, 250));
-		}
 		bullet.add(new Projectile(-5, -5));
 		init = true;
 	}
 	public void nextStage() {
 		levelUp.play();
 		bg.changeImage();
+		if (!firstStart) {
+			isStageDisplayed = true;
+			timeStart = System.currentTimeMillis();
+		}
 		bulletNum = 1;
 		hit = false;
 		maxBullet = 0;
@@ -363,6 +373,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index2 = 0;
 		index3 = 0;
 		index4 = 0;
+		stageNum++;
+		increment = 0;
 		if (totalTime != 25) {
 			totalTime -= 5;
 		}
@@ -372,19 +384,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy2.clear();
 		enemy3.clear();
 		enemy4.clear();
-		start = System.currentTimeMillis();
-		for (int i = 0, x = 0; i < 5; i++, x+=60) {
-			enemy1.add(new Enemy1(x, 10));
-			enemy2.add(new Enemy2(x, 90));
-			enemy3.add(new Enemy3(x, 170));
-			enemy4.add(new Enemy4(x, 250));
-		}
 		bullet.add(new Projectile(-5, -5));
 		
 	}
-	public void updateTime() {
+	public void updateTime() { 
 		long currentTime = System.currentTimeMillis() - timeStart;
-		if (currentTime > increment && !stageClear()) {
+		if (currentTime > increment && !stageClear() && !isStageDisplayed) {
 			time--;
 			increment += 1000;
 		}
@@ -392,6 +397,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void calculateTimeScore() {
 		if (stageClear()) {
 			score += (time*5);
+		}
+	}
+	public void displayStage() {
+		long currentTime = System.currentTimeMillis() - timeStart;
+		if (currentTime > 2000) {
+			isStageDisplayed = false;
+			timeStart = System.currentTimeMillis();
+			for (int i = 0, x = 0; i < 5; i++, x+=60) {
+				enemy1.add(new Enemy1(x, 10));
+				enemy2.add(new Enemy2(x, 90));
+				enemy3.add(new Enemy3(x, 170));
+				enemy4.add(new Enemy4(x, 250));
+			}
 		}
 	}
 

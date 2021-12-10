@@ -60,15 +60,13 @@ public class Background{
 		return tempImage;
 	}
 	public void changeImage() {
-		try {
-			if (stageNum < 4) {
-				stageNum++;
-			}
-			else {
-				stageNum = 0;
-			}
+		
+		if (stageNum < 3) {
+			stageNum++;
 		}
-		catch (ArrayIndexOutOfBoundsException ignore) {}
+		else {
+			stageNum = 0;
+		}
 		img = getImage(stage[stageNum]);
 	}
 	public void resetBg() {
