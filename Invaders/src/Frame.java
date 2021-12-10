@@ -32,6 +32,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Enemy3> enemy3 = new ArrayList<>();
 	ArrayList<Enemy4> enemy4 = new ArrayList<>();
 	ArrayList<Projectile> bullet = new ArrayList<>();
+	ArrayList<Projectile> enemyBullet = new ArrayList<>();
 	Music impact = new Music("impact_sound.wav", false);
 	Music fire = new Music("ship_sound.wav", false);
 	Music gameOver = new Music("gameover_sound.wav", false);
@@ -56,6 +57,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-5, -5));
 		JFrame f = new JFrame("Universe Marauders");
 		f.setSize(new Dimension(390, 600));
 		f.setBackground(Color.blue);
@@ -111,10 +113,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int i = 0; i < bullet.size(); i++) {
 				bullet.get(i).paint(g);
 			}
+			for (int i = 0; i < enemyBullet.size(); i++) {
+				enemyBullet.get(i).paint(g);
+			}
 		}
 		if (hit) {
 			bullet.remove(indexRemove);
 			hit = false;
+		}
+		if (collide()) {
+			init = false;
 		}
 		if (!init) {
 			music.stop();
@@ -183,6 +191,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			for (int i = 0; i < bullet.size(); i++) {
 				bullet.get(i).fire();
 			}
+			for (int i = 0; i < enemyBullet.size(); i++) {
+				enemyBullet.get(i).fireEnemy();
+			}
 			
 		}
 	}
@@ -244,6 +255,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		try {
 			for (int i = 0; i < 5-index1;  i++) {
 				enemy1.get(i).paint(g);
+				spawnBullet(enemy1.get(i).getX()-20, enemy1.get(i).getY());
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
 						if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
@@ -265,6 +277,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		try {
 			for (int i = 0; i < 5-index2;  i++) {
 				enemy2.get(i).paint(g);
+				spawnBullet(enemy2.get(i).getX()-20, enemy2.get(i).getY());
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
 						if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
@@ -287,6 +300,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		try {
 			for (int i = 0; i < 5-index3;  i++) {
 				enemy3.get(i).paint(g);
+				spawnBullet(enemy3.get(i).getX()-20, enemy3.get(i).getY());
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
 						if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
@@ -351,12 +365,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		totalTime = 60;
 		stageNum = 1;
 		bullet.clear();
+		enemyBullet.clear();
 		enemy1.clear();
 		enemy2.clear();
 		enemy3.clear();
 		enemy4.clear();
 		increment = 1000;
 		bullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-5, -5));
 		init = true;
 	}
 	public void nextStage() {
@@ -375,16 +391,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index4 = 0;
 		stageNum++;
 		increment = 0;
-		if (totalTime != 25) {
+		if (totalTime != 30) {
 			totalTime -= 5;
 		}
 		time = totalTime;
 		bullet.clear();
+		enemyBullet.clear();
 		enemy1.clear();
 		enemy2.clear();
 		enemy3.clear();
 		enemy4.clear();
 		bullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-5, -5));
 		
 	}
 	public void updateTime() { 
@@ -411,6 +429,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				enemy4.add(new Enemy4(x, 250));
 			}
 		}
+	}
+	public void spawnBullet(int x, int y) {
+		if (Math.random() < 0.002) {
+			enemyBullet.add(new Projectile(x, y));
+		}
+	}
+	public boolean collide() {
+		for (int i = 0; i < enemyBullet.size(); i++) {
+			if (enemyBullet.get(i).getX()+65 >= player.getX()+10 && enemyBullet.get(i).getX()+75 <= player.getX()+60) {
+				if (enemyBullet.get(i).getY()+10 >= player.getY()+10 && enemyBullet.get(i).getY()+20 <= player.getY()+60) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }

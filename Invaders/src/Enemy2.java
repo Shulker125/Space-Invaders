@@ -48,6 +48,9 @@ public class Enemy2 {
 			v *= -1;
 		}
 	}
+	public void fire() {
+		
+	}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(1, 1);

@@ -21,6 +21,9 @@ public class Projectile {
 	public void fire() {
 		y -= v;
 	}
+	public void fireEnemy() {
+		y += v;
+	}
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		update();
