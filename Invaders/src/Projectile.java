@@ -21,7 +21,7 @@ public class Projectile {
 	public void fire() {
 		y -= v;
 	}
-	public void fireEnemy() {
+	public void fireEnemy() { 
 		y += v;
 	}
 	public void paint(Graphics g) {

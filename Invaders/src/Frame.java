@@ -42,18 +42,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public int bulletNum = 1;
 	public long start = System.currentTimeMillis();
 	public long timeStart = start;
-	public boolean init = false;
-	public boolean hit = false;
-	public boolean firstStart = true;
-	public int maxBullet = 0;
-	public int score = 0;
-	public int index1, index2, index3, index4, indexRemove;
-	public int totalTime = 60;
-	public int time = totalTime;
+	public boolean init = false, hit = false, firstStart = true, isStageDisplayed = false;
+	public int maxBullet = 0, score = 0, index1, index2, index3, index4, indexRemove, difficulty, multiplier, maxScore;
+	public int totalTime = 60, time = totalTime;
 	public int increment = 1000;
 	public int isGameOver = 0;
 	public int stageNum = 1;
-	public boolean isStageDisplayed = false;
+	public double bullets;
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
@@ -90,10 +85,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if (firstStart) {
 			title.paint(g);
 			g.setColor(white);
-			g.setFont(new Font("Monospaced", Font.BOLD, 30));
-			g.drawString("Click R to Start!", 40, 250);
+			g.setFont(new Font("Monospaced", Font.BOLD, 20));
+			g.drawString("Select Difficulty", 100, 250);
+			g.drawString("Easy: Click 1", 120, 270);
+			g.drawString("Medium: Click 2", 120, 290);
+			g.drawString("Hard: Click 3", 120, 310);
 			g.setFont(new Font("Monospaced", Font.BOLD, 15));
-			g.drawString("WASD/Arrow Keys to move, Space to fire", 16, 280);
+			g.drawString("WASD/Arrow Keys to move, Space to fire", 16, 330);
 		}
 		if (isStageDisplayed) {
 			displayStage();
@@ -202,6 +200,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 			int key = arg0.getKeyCode();
+			System.out.println(key);
 			if (key == 68 || key == 39) {
 				player.v = 2;
 			}
@@ -211,7 +210,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			if (!init && key == 82) {
 				reset();
 			}
-			if (firstStart && key == 82) {
+			if (firstStart && key == 49) {
+				setDifficultyEasy();
+				isStageDisplayed = true;
+				timeStart = System.currentTimeMillis();
+				reset();
+				firstStart = false;
+			}
+			else if (firstStart && key == 50) {
+				setDifficultyMedium();
+				isStageDisplayed = true;
+				timeStart = System.currentTimeMillis();
+				reset();
+				firstStart = false;
+			}
+			else if (firstStart && key == 51) {
+				setDifficultyHard();
 				isStageDisplayed = true;
 				timeStart = System.currentTimeMillis();
 				reset();
@@ -264,7 +278,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 							hit = true;
 							enemy1.remove(i);
 							index1++;
-							score+=5;
+							score+=maxScore;
 						}
 					}
 				}
@@ -286,7 +300,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 							hit = true;
 							enemy2.remove(i);
 							index2++;
-							score+=4;
+							score+=maxScore-1;
 						}
 						
 					}
@@ -309,7 +323,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 							hit = true;
 							enemy3.remove(i);
 							index3++;
-							score+=3;
+							score+=maxScore-2;
 						}
 						
 					}
@@ -331,7 +345,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 							hit = true;
 							enemy4.remove(i);
 							index4++;
-							score+=2;
+							score+=maxScore-3;
 						}
 						
 					}
@@ -361,8 +375,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index2 = 0;
 		index3 = 0;
 		index4 = 0;
-		time = 60;
-		totalTime = 60;
+		totalTime = time;
 		stageNum = 1;
 		bullet.clear();
 		enemyBullet.clear();
@@ -391,9 +404,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index4 = 0;
 		stageNum++;
 		increment = 0;
-		if (totalTime != 30) {
-			totalTime -= 5;
+		if (difficulty == 1) {
+			if (totalTime != 30) {
+				totalTime -= 5;
+			}
 		}
+		if (difficulty == 2) {
+			if (totalTime != 30) {
+				totalTime -= 5;
+			}
+		}
+		if (difficulty == 3) {
+			if (totalTime != 25) {
+				totalTime -= 5;
+			}
+		}
+		
 		time = totalTime;
 		bullet.clear();
 		enemyBullet.clear();
@@ -414,7 +440,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	public void calculateTimeScore() {
 		if (stageClear()) {
-			score += (time*5);
+			score += (time*multiplier);
 		}
 	}
 	public void displayStage() {
@@ -431,7 +457,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 	}
 	public void spawnBullet(int x, int y) {
-		if (Math.random() < 0.002) {
+		if (Math.random() < bullets) {
 			enemyBullet.add(new Projectile(x, y));
 		}
 	}
@@ -444,6 +470,27 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		return false;
+	}
+	public void setDifficultyEasy() {
+		difficulty = 1;
+		time = 60;
+		multiplier = 3;
+		bullets = 0.001;
+		maxScore = 5;
+	}
+	public void setDifficultyMedium() {
+		difficulty = 2;
+		time = 60;
+		multiplier = 5;
+		bullets = 0.002;
+		maxScore = 6;
+	}
+    public void setDifficultyHard() {
+		difficulty = 3;
+		time = 50;
+		multiplier = 10;
+		bullets = 0.003;
+		maxScore = 8;
 	}
 
 }
