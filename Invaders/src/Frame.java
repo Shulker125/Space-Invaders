@@ -43,7 +43,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public long start = System.currentTimeMillis();
 	public long timeStart = start;
 	public boolean init = false, hit = false, firstStart = true, isStageDisplayed = false;
-	public int maxBullet = 0, score = 0, index1, index2, index3, index4, indexRemove, difficulty, multiplier, maxScore;
+	public int maxBullet = 0, score = 0, index1, index2, index3, index4, indexRemove, difficulty, multiplier, maxScore, rateOfFire;
 	public int totalTime = 60, time = totalTime;
 	public int increment = 1000;
 	public int isGameOver = 0;
@@ -52,7 +52,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
-		enemyBullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-500, -5));
 		JFrame f = new JFrame("Universe Marauders");
 		f.setSize(new Dimension(390, 600));
 		f.setBackground(Color.blue);
@@ -86,12 +86,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			title.paint(g);
 			g.setColor(white);
 			g.setFont(new Font("Monospaced", Font.BOLD, 20));
-			g.drawString("Select Difficulty", 100, 250);
-			g.drawString("Easy: Click 1", 120, 270);
-			g.drawString("Medium: Click 2", 120, 290);
-			g.drawString("Hard: Click 3", 120, 310);
+			g.drawString("Select Difficulty", 98, 250);
+			g.drawString("Easy: Click 1", 118, 270);
+			g.drawString("Medium: Click 2", 105, 290);
+			g.drawString("Hard: Click 3", 118, 310);
 			g.setFont(new Font("Monospaced", Font.BOLD, 15));
-			g.drawString("WASD/Arrow Keys to move, Space to fire", 16, 330);
+			g.drawString("WASD/Arrow Keys to move, Space to fire", 17, 330);
 		}
 		if (isStageDisplayed) {
 			displayStage();
@@ -126,7 +126,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			music.stop();
 			g.setColor(white);
 			g.drawString("Game Over!", 110, 200);
-			g.drawString("Click R to Respawn", 30, 250);
+			g.setFont(new Font("Monospaced", Font.BOLD, 20));
+			g.drawString("Select Difficulty", 98, 230);
+			g.drawString("Easy: Click 1", 118, 250);
+			g.drawString("Medium: Click 2", 105, 270);
+			g.drawString("Hard: Click 3", 118, 290);
 			while (isGameOver < 1 && !firstStart) {
 				gameOver.play();
 				isGameOver++;
@@ -207,7 +211,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			else if (key == 65 || key == 37) {
 				player.v = -2;
 			}
-			if (!init && key == 82) {
+			if (!init && key == 49) {
+				setDifficultyEasy();
+				reset();
+			}
+			if (!init && key == 50) {
+				setDifficultyMedium();
+				reset();
+			}
+			if (!init && key == 51) {
+				setDifficultyHard();
 				reset();
 			}
 			if (firstStart && key == 49) {
@@ -252,7 +265,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				bulletNum++;
 				maxBullet++;
 			}
-			if (time >= 1000) {
+			if (time >= rateOfFire) {
 				start = System.currentTimeMillis();
 				maxBullet = 0;
 			}
@@ -385,7 +398,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy4.clear();
 		increment = 1000;
 		bullet.add(new Projectile(-5, -5));
-		enemyBullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-500, -5));
 		init = true;
 	}
 	public void nextStage() {
@@ -405,16 +418,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		stageNum++;
 		increment = 0;
 		if (difficulty == 1) {
+			setDifficultyEasy();
 			if (totalTime != 30) {
 				totalTime -= 5;
 			}
 		}
 		if (difficulty == 2) {
+			setDifficultyMedium();
 			if (totalTime != 30) {
 				totalTime -= 5;
 			}
 		}
 		if (difficulty == 3) {
+			setDifficultyHard();
 			if (totalTime != 25) {
 				totalTime -= 5;
 			}
@@ -428,7 +444,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		enemy3.clear();
 		enemy4.clear();
 		bullet.add(new Projectile(-5, -5));
-		enemyBullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-500, -5));
 		
 	}
 	public void updateTime() { 
@@ -474,23 +490,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void setDifficultyEasy() {
 		difficulty = 1;
 		time = 60;
-		multiplier = 3;
+		multiplier = 2;
 		bullets = 0.001;
-		maxScore = 5;
+		maxScore = 4;
+		rateOfFire = 500;
 	}
 	public void setDifficultyMedium() {
 		difficulty = 2;
-		time = 60;
+		time = 50;
 		multiplier = 5;
 		bullets = 0.002;
-		maxScore = 6;
+		maxScore = 3;
+		rateOfFire = 750;
 	}
     public void setDifficultyHard() {
 		difficulty = 3;
-		time = 50;
+		time = 40;
 		multiplier = 10;
 		bullets = 0.003;
 		maxScore = 8;
+		rateOfFire = 1000;
 	}
 
 }
