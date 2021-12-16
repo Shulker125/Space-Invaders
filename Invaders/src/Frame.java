@@ -206,6 +206,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 			
 		}
+		
 	}
 
 	@Override
@@ -221,16 +222,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 			//setting game difficulty after game ends
 			if (!init && key == 49) {
-				setDifficultyEasy();
 				reset();
+				setDifficultyEasy();
+				
 			}
 			if (!init && key == 50) {
-				setDifficultyMedium();
 				reset();
+				setDifficultyMedium();
+				
 			}
 			if (!init && key == 51) {
-				setDifficultyHard();
 				reset();
+				setDifficultyHard();
+				
 			}
 			//starting game difficulty set
 			if (firstStart && key == 49) {
@@ -394,8 +398,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	//resets the game at the end
 	public void reset() {
-		timeStart = System.currentTimeMillis();
 		isStageDisplayed = true;
+		timeStart = System.currentTimeMillis();
+		bullet.clear();
+		enemyBullet.clear();
+		enemy1.clear();
+		enemy2.clear();
+		enemy3.clear();
+		enemy4.clear();
 		music.loop();
 		bg.resetBg();
 		score = 0;
@@ -409,12 +419,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index4 = 0;
 		totalTime = time;
 		stageNum = 1;
-		bullet.clear();
-		enemyBullet.clear();
-		enemy1.clear();
-		enemy2.clear();
-		enemy3.clear();
-		enemy4.clear();
 		increment = 1000;
 		bullet.add(new Projectile(-5, -5));
 		enemyBullet.add(new Projectile(-500, -5));
@@ -483,6 +487,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	//Delay for displaying enemies
 	public void displayStage() {
+		System.out.println("run");
 		long currentTime = System.currentTimeMillis() - timeStart;
 		if (currentTime > 2000) {
 			isStageDisplayed = false;
