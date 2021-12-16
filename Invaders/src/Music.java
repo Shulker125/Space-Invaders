@@ -69,6 +69,7 @@ public class Music  implements Runnable  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		catch(OutOfMemoryError e) {}
 	}
 
 	@Override
