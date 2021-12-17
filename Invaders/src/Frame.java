@@ -47,6 +47,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public int maxBullet = 0, score = 0, index1, index2, index3, index4, indexRemove, difficulty, multiplier, maxScore, rateOfFire, bulletNum = 1,totalTime = 60, time = totalTime, stageNum = 1,isGameOver = 0,increment = 1000;
 	//initializing doubles
 	public double bullets;
+	//initializing strings
+	public String direction = "";
 	
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
@@ -91,8 +93,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.drawString("Easy: Click 1", 118, 270);
 			g.drawString("Medium: Click 2", 105, 290);
 			g.drawString("Hard: Click 3", 118, 310);
-			g.setFont(new Font("Monospaced", Font.BOLD, 15));
-			g.drawString("WASD/Arrow Keys to move, Space to fire", 17, 330);
+			g.setFont(new Font("Monospaced", Font.BOLD, 14));
+			g.drawString("WASD/Arrow Keys to move, Space/Click to fire", 17, 330);
 		}
 		//displaying stage content
 		if (isStageDisplayed) {
@@ -170,7 +172,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-	
+		int key = arg0.getButton();
+		if (key == 1 && init && !firstStart && !isStageDisplayed) {
+			long time = System.currentTimeMillis()-start;
+			
+			if (maxBullet < 1) {
+				bullet.add(new Projectile(player.getX()-36, player.getY()));
+				fire.play();
+				bulletNum++;
+				maxBullet++;
+			}
+			if (time >= rateOfFire) {
+				start = System.currentTimeMillis();
+				maxBullet = 0;
+			}
+			
+		}
 	}
 
 	@Override
@@ -213,27 +230,30 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 			int key = arg0.getKeyCode();
+			
 			//player movement
 			if (key == 68 || key == 39) {
 				player.v = 2;
+				direction = "right";
 			}
 			else if (key == 65 || key == 37) {
 				player.v = -2;
+				direction = "left";
 			}
 			//setting game difficulty after game ends
 			if (!init && key == 49) {
-				reset();
 				setDifficultyEasy();
+				reset();
 				
 			}
 			if (!init && key == 50) {
-				reset();
 				setDifficultyMedium();
+				reset();
 				
 			}
 			if (!init && key == 51) {
-				reset();
 				setDifficultyHard();
+				reset();
 				
 			}
 			//starting game difficulty set
@@ -265,11 +285,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		int key = arg0.getKeyCode();
 		//stopping player movement if key released
-		if (key == 68 || key == 39) {
+		if (!direction.equals("left") && key == 68 || key == 39 && !direction.equals("left")) {
 			player.v = 0;
+			direction = "";
 		}
-		else if (key == 65 || key == 37) {
+		else if (!direction.equals("right") && key == 65 || key == 37 && !direction.equals("right")) {
 			player.v = 0;
+			direction = "";
 		}
 		//bullet firing logic
 		if (key == 32 && init && !firstStart && !isStageDisplayed) {
@@ -370,7 +392,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		try {
 			for (int i = 0; i < 5-index4;  i++) {
 				enemy4.get(i).paint(g);
-				spawnBullet(enemy4.get(i).getX()-20, enemy4.get(i).getY());
+				if (difficulty == 3) {
+					spawnBullet(enemy4.get(i).getX()-20, enemy4.get(i).getY());
+				}
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
 						if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
@@ -399,14 +423,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//resets the game at the end
 	public void reset() {
 		isStageDisplayed = true;
-		timeStart = System.currentTimeMillis();
 		bullet.clear();
 		enemyBullet.clear();
 		enemy1.clear();
 		enemy2.clear();
 		enemy3.clear();
 		enemy4.clear();
-		music.loop();
 		bg.resetBg();
 		score = 0;
 		bulletNum = 1;
@@ -417,12 +439,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index2 = 0;
 		index3 = 0;
 		index4 = 0;
-		totalTime = time;
+		time = totalTime;
 		stageNum = 1;
 		increment = 1000;
 		bullet.add(new Projectile(-5, -5));
 		enemyBullet.add(new Projectile(-500, -5));
 		init = true;
+		music.loop();
+		timeStart = System.currentTimeMillis();
 	}
 	//resets the game for next stage
 	public void nextStage() {
@@ -442,19 +466,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		stageNum++;
 		increment = 0;
 		if (difficulty == 1) {
-			setDifficultyEasy();
 			if (totalTime != 30) {
 				totalTime -= 5;
 			}
 		}
 		if (difficulty == 2) {
-			setDifficultyMedium();
 			if (totalTime != 25) {
 				totalTime -= 5;
 			}
 		}
 		if (difficulty == 3) {
-			setDifficultyHard();
 			if (totalTime != 25) {
 				totalTime -= 5;
 			}
@@ -487,7 +508,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 	//Delay for displaying enemies
 	public void displayStage() {
-		System.out.println("run");
 		long currentTime = System.currentTimeMillis() - timeStart;
 		if (currentTime > 2000) {
 			isStageDisplayed = false;
@@ -520,25 +540,25 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//setting difficulty to easy
 	public void setDifficultyEasy() {
 		difficulty = 1;
-		time = 60;
+		totalTime = 60;
 		multiplier = 2;
-		bullets = 0.001;
+		bullets = 0.0008;
 		maxScore = 4;
 		rateOfFire = 500;
 	}
 	//setting difficulty to medium
 	public void setDifficultyMedium() {
 		difficulty = 2;
-		time = 50;
+		totalTime = 50;
 		multiplier = 5;
-		bullets = 0.002;
-		maxScore = 3;
+		bullets = 0.0016;
+		maxScore = 5;
 		rateOfFire = 750;
 	}
 	//setting difficulty to hard
     public void setDifficultyHard() {
 		difficulty = 3;
-		time = 40;
+		totalTime = 40;
 		multiplier = 10;
 		bullets = 0.003;
 		maxScore = 8;
