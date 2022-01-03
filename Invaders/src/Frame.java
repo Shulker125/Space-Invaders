@@ -49,7 +49,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public double bullets;
 	//initializing strings
 	public String direction = "";
-	
+	//adds starting items + initializes window
 	public Frame() {
 		bullet.add(new Projectile(-5, -5));
 		enemyBullet.add(new Projectile(-500, -5));
@@ -82,6 +82,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			calculateTimeScore();
 			nextStage();
 		}
+		//painting background and player
 		bg.paint(g);
 		player.paint(g);
 		//Setting menu items
@@ -173,9 +174,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		int key = arg0.getButton();
+		//bullet firing with mouse
 		if (key == 1 && init && !firstStart && !isStageDisplayed) {
 			long time = System.currentTimeMillis()-start;
-			
+			//calculating how many times to fire bullet and where
 			if (maxBullet < 1) {
 				bullet.add(new Projectile(player.getX()-36, player.getY()));
 				fire.play();
@@ -293,10 +295,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			player.v = 0;
 			direction = "";
 		}
-		//bullet firing logic
+		//bullet firing logic for space
 		if (key == 32 && init && !firstStart && !isStageDisplayed) {
 			long time = System.currentTimeMillis()-start;
-			
+			//calculating how many times to fire bullet and where
 			if (maxBullet < 1) {
 				bullet.add(new Projectile(player.getX()-36, player.getY()));
 				fire.play();
@@ -324,7 +326,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				spawnBullet(enemy1.get(i).getX()-20, enemy1.get(i).getY());
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy1.get(i).getY() && bullet.get(x).getY() <= enemy1.get(i).getY()+50 && !enemy1.isEmpty()) {
-						if (bullet.get(x).getX() >= enemy1.get(i).getX()-50 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
+						if (bullet.get(x).getX() >= enemy1.get(i).getX()-60 && bullet.get(x).getX() <= enemy1.get(i).getX()) {
 							impact.play();
 							indexRemove = x;
 							hit = true;
@@ -347,7 +349,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				spawnBullet(enemy2.get(i).getX()-20, enemy2.get(i).getY());
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy2.get(i).getY() && bullet.get(x).getY() <= enemy2.get(i).getY()+50 && !enemy2.isEmpty()) {
-						if (bullet.get(x).getX() >= enemy2.get(i).getX()-50 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
+						if (bullet.get(x).getX() >= enemy2.get(i).getX()-60 && bullet.get(x).getX() <= enemy2.get(i).getX()) {
 							impact.play();
 							indexRemove = x;
 							hit = true;
@@ -371,7 +373,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				spawnBullet(enemy3.get(i).getX()-20, enemy3.get(i).getY());
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy3.get(i).getY() && bullet.get(x).getY() <= enemy3.get(i).getY()+50 && !enemy3.isEmpty()) {
-						if ( bullet.get(x).getX() >= enemy3.get(i).getX()-50 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
+						if ( bullet.get(x).getX() >= enemy3.get(i).getX()-60 && bullet.get(x).getX() <= enemy3.get(i).getX()) {
 							impact.play();
 							indexRemove = x;
 							hit = true;
@@ -392,12 +394,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		try {
 			for (int i = 0; i < 5-index4;  i++) {
 				enemy4.get(i).paint(g);
+				g.setColor(white);
 				if (difficulty == 3) {
 					spawnBullet(enemy4.get(i).getX()-20, enemy4.get(i).getY());
 				}
 				for (int x = 0; x < bullet.size(); x++) {
 					if (bullet.get(x).getY() >= enemy4.get(i).getY() && bullet.get(x).getY() <= enemy4.get(i).getY()+50 && !enemy4.isEmpty()) {
-						if (bullet.get(x).getX() >= enemy4.get(i).getX()-50 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
+						if (bullet.get(x).getX() >= enemy4.get(i).getX()-60 && bullet.get(x).getX() <= enemy4.get(i).getX()) {
 							impact.play();
 							indexRemove = x;
 							hit = true;

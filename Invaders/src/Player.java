@@ -47,6 +47,7 @@ public class Player {
 		tx.setToTranslation(a, b);
 		tx.scale(1, 1);
 	}
+	//movement logic
 	public void move() {
 		if (x > -13 && x < 323) {
 			x += v;

@@ -39,6 +39,7 @@ public class Enemy2 {
 	public void setY(int y) {
 		this.y = y;
 	}
+	//enemy2 movement
 	public void move() {
 		x += v;
 		if (x > 300) {
@@ -47,9 +48,6 @@ public class Enemy2 {
 		else if (x < 0) {
 			v *= -1;
 		}
-	}
-	public void fire() {
-		
 	}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);

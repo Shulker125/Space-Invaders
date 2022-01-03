@@ -18,9 +18,11 @@ public class Projectile {
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y);
 	}
+	//player firing
 	public void fire() {
 		y -= v;
 	}
+	//enemy firing
 	public void fireEnemy() { 
 		y += v;
 	}
