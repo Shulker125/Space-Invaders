@@ -1,3 +1,3 @@
 # Space-Invaders
 
-![image](https://user-images.githubusercontent.com/78383186/148124903-3f85f50e-66a3-4367-bfda-99da383d3f2f.png)
+![Screenshot 2022-01-04 131549](https://user-images.githubusercontent.com/78383186/148125273-7fb48c18-e1db-45b0-8fbb-e75ddc3ea096.png)
