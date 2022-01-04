@@ -1,3 +1,2 @@
 # Space-Invaders
 
-:shipit
