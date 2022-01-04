@@ -1,4 +1,34 @@
 # Space-Invaders
+```
+public void reset() {
+		isStageDisplayed = true;
+		bullet.clear();
+		enemyBullet.clear();
+		enemy1.clear();
+		enemy2.clear();
+		enemy3.clear();
+		enemy4.clear();
+		bg.resetBg();
+		score = 0;
+		bulletNum = 1;
+		hit = false;
+		maxBullet = 0;
+		isGameOver = 0;
+		index1 = 0;
+		index2 = 0;
+		index3 = 0;
+		index4 = 0;
+		time = totalTime;
+		stageNum = 1;
+		increment = 1000;
+		bullet.add(new Projectile(-5, -5));
+		enemyBullet.add(new Projectile(-500, -5));
+		init = true;
+		music.loop();
+		timeStart = System.currentTimeMillis();
+	}
+  ```
+
 
 ## Background
 ![Capture](https://user-images.githubusercontent.com/67216058/148125948-3f45b715-d9ca-4a3f-90a9-69f2e4dc3fe5.PNG)
