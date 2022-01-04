@@ -468,22 +468,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		index4 = 0;
 		stageNum++;
 		increment = 0;
-		if (difficulty == 1) {
-			if (totalTime != 30) {
-				totalTime -= 5;
-			}
+		if (totalTime != 25) {
+			totalTime -= 5;
 		}
-		if (difficulty == 2) {
-			if (totalTime != 25) {
-				totalTime -= 5;
-			}
-		}
-		if (difficulty == 3) {
-			if (totalTime != 25) {
-				totalTime -= 5;
-			}
-		}
-		
 		time = totalTime;
 		bullet.clear();
 		enemyBullet.clear();
