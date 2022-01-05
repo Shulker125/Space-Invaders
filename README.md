@@ -3,6 +3,7 @@
 
 ## Background
 ![Capture](https://user-images.githubusercontent.com/67216058/148125948-3f45b715-d9ca-4a3f-90a9-69f2e4dc3fe5.PNG)
+> This class had code that relates to the background of the game. It had 2 methods that changed the background each stage and resetted the background to the first index.
 
 ## Enemy
 ![Capture1](https://user-images.githubusercontent.com/67216058/148125946-1d810cc7-b833-406e-99f5-8f79e6492e53.PNG)
