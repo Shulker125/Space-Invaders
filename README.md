@@ -21,7 +21,7 @@
 ## Frame
 
 ![image](https://user-images.githubusercontent.com/78383186/148125433-3c1f5492-fa44-4ced-b4a3-edab907b3585.png)   
-> The top of the class was devoted to initializing all of the ArrayLists, objects, and variables used in the program.     
+> The top of the class was devoted to initializing all of the ArrayLists, objects, and variables used in the program. <
 ![image](https://user-images.githubusercontent.com/78383186/148125510-b2cb5c19-5158-427c-b2db-9dbc7c2bf20e.png)   
 ![image](https://user-images.githubusercontent.com/78383186/148125745-c993796b-a6aa-43f2-a3e8-7b6577f20a9d.png)   
 ![image](https://user-images.githubusercontent.com/78383186/148125772-230a7ab8-03b9-4057-afbc-d9a5fd687c67.png)    
