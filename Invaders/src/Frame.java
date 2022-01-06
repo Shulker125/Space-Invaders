@@ -82,7 +82,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			calculateTimeScore();
 			nextStage();
 		}
-		
+		//painting background and player
+		bg.paint(g);
+		player.paint(g);
 		//Setting menu items
 		if (firstStart) {
 			title.paint(g);
@@ -107,9 +109,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setFont(new Font("Monospaced", Font.BOLD, 30));
 		g.drawString("Score:"+score, 115, 500);
 		g.drawString("Time:"+time, 125, 550);
-		//painting background and player
-		bg.paint(g);
-		player.paint(g);
+		
 		//painting enemies + bullets
 		if (init && !firstStart && !isStageDisplayed) {
 			paint1(g);
