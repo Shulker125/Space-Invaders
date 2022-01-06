@@ -7,6 +7,7 @@
 
 ## Enemy
 ![Capture1](https://user-images.githubusercontent.com/67216058/148125946-1d810cc7-b833-406e-99f5-8f79e6492e53.PNG)
+#### This class had code that relates to the emenies in the game. There are 4 rows of enemies in the game but the code is the same for all of them. It has only one method that controls the bounds of the enemy ships.
 
 ## Player
 ![Capture2](https://user-images.githubusercontent.com/67216058/148125944-6f50173f-d02f-4aa8-973d-6aca384ee14f.PNG)
