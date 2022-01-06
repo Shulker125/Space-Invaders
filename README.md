@@ -3,9 +3,10 @@
 > This project implements arrays, classes, and methods to create a Space Invaders type game. The main class was the Frame class that calls all other classes and methods to run the program. 
 
 ## Background
+<details>
 ![Capture](https://user-images.githubusercontent.com/67216058/148125948-3f45b715-d9ca-4a3f-90a9-69f2e4dc3fe5.PNG)
 #### This class had code that relates to the background of the game. It had 2 methods that changed the background each stage and resetted the background to the first index.
-
+</details>
 ## Enemy
 ![Capture1](https://user-images.githubusercontent.com/67216058/148125946-1d810cc7-b833-406e-99f5-8f79e6492e53.PNG)
 #### This class had code that relates to the enemies in the game. There are 4 rows of enemies in the game but the code is the same for all of them. It has only one method that controls the bounds of the enemy ships.
