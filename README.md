@@ -1,12 +1,12 @@
 # Space-Invaders
 
-# Gameplay
+## Gameplay
 https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-b48d-632e983a690d.mp4
 
 
 > This project implements arrays, classes, and methods to create a Space Invaders type game. The main class was the Frame class that calls all other classes and methods to run the program. 
 
-# How to Play
+## How to Play
 
 > To begin, select a difficulty by pressing either 1, 2, or 3 on your keyboard. Use the WASD or arrow keys to control the ship and space to fire. The objective of this game is to clear the screen of all the aliens, and once that is complete, you will level up. As you progress, the amount of time you have to complete each level decreases.
 
