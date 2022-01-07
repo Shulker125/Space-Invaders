@@ -1,8 +1,5 @@
 # Space-Invaders
 
-## Gameplay
-https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-b48d-632e983a690d.mp4
-
 
 > This project implements arrays, classes, and methods to create a Space Invaders type game. The main class was the Frame class that calls all other classes and methods to run the program. 
 
@@ -12,6 +9,9 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 
 ![image](https://user-images.githubusercontent.com/67216058/148602901-f0ff2d2b-e626-47a1-a2e0-1d627db4ef34.png)
 ![image](https://user-images.githubusercontent.com/67216058/148603150-0ceb355d-5acb-4b39-9d4a-3316ac604c43.png)
+
+## Gameplay
+https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-b48d-632e983a690d.mp4
 
 
 
