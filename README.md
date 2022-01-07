@@ -8,9 +8,11 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 
 ## How to Play
 
-> To begin, select a difficulty by pressing either 1, 2, or 3 on your keyboard. Use the WASD or arrow keys to control the ship and space to fire. The objective of this game is to clear the screen of all the aliens, and once that is complete, you will level up. As you progress, the amount of time you have to complete each level decreases.
+> To begin, select a difficulty by pressing either 1, 2, or 3 on your keyboard. Use the WASD or arrow keys to control the ship and space to fire. The objective of this game is to clear the screen of all the aliens while avoiding all the enemy bombs, and once that is complete, you will level up. As you progress, the amount of time you have to complete each level decreases.
 
 ![image](https://user-images.githubusercontent.com/67216058/148602901-f0ff2d2b-e626-47a1-a2e0-1d627db4ef34.png)
+![image](https://user-images.githubusercontent.com/67216058/148603150-0ceb355d-5acb-4b39-9d4a-3316ac604c43.png)
+
 
 
 ## Background
