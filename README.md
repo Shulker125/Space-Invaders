@@ -16,6 +16,8 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 ## Characters
 ![image](https://user-images.githubusercontent.com/67216058/148603758-5bb4cf0f-d0ed-40c7-bcd7-8df9cc89a923.png)
 ![image](https://user-images.githubusercontent.com/67216058/148604110-4f4d6a63-6d8d-4b6d-a8cb-af83a0276a77.png)
+![image](https://user-images.githubusercontent.com/67216058/148604161-5dee37b5-0145-40ad-a6ef-f44c92e34ff3.png)
+
 ### These are the aliens. After the collapse of your colony, these aliens are invading your world to collect your remaining resources. Your job is to destroy them.
 
 
