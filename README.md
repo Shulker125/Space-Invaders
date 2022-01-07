@@ -14,25 +14,6 @@
 https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-b48d-632e983a690d.mp4
 
 
-
-## Background
-![Capture](https://user-images.githubusercontent.com/67216058/148125948-3f45b715-d9ca-4a3f-90a9-69f2e4dc3fe5.PNG)
-#### This class had code that relates to the background of the game. It had 2 methods that changed the background each stage and resetted the background to the first index.
-  
-## Enemy
-![Capture1](https://user-images.githubusercontent.com/67216058/148125946-1d810cc7-b833-406e-99f5-8f79e6492e53.PNG)
-#### This class had code that relates to the enemies in the game. There are 4 rows of enemies in the game but the code is the same for all of them. It has only one method that controls the bounds of the enemy ships.
-
-## Player
-![Capture2](https://user-images.githubusercontent.com/67216058/148125944-6f50173f-d02f-4aa8-973d-6aca384ee14f.PNG)
-
-## Projectile
-![Capture3](https://user-images.githubusercontent.com/67216058/148125950-d3583789-c761-4ac0-bb3c-dd1e89fcea45.PNG)
-
-## Title
-![Capture4](https://user-images.githubusercontent.com/67216058/148125949-26125074-205e-4896-adbd-1e38a5f54dfd.PNG)
-
-
 ## Frame
 
 ![image](https://user-images.githubusercontent.com/78383186/148125433-3c1f5492-fa44-4ced-b4a3-edab907b3585.png)   
