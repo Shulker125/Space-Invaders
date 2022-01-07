@@ -156,21 +156,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	} 
 	 
-	
-	
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		
-	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
@@ -193,11 +178,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 	}
 
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -314,11 +295,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 	}
 
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	//painting enemy1 + bullet and checking if hit by player bullet
 	public void paint1(Graphics g) {
 		try {
@@ -415,7 +392,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		catch (IndexOutOfBoundsException e) {}
-		
+		// end part 1
 	}
 	//checking if all enemies are gone
 	public boolean stageClear() {
@@ -555,5 +532,30 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		maxScore = 8;
 		rateOfFire = 1000;
 	}
+    // end part 2
+    @Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
