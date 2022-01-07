@@ -2,6 +2,13 @@
 
 > This project implements arrays, classes, and methods to create a Space Invaders type game. The main class was the Frame class that calls all other classes and methods to run the program. 
 
+# How to Play
+
+> To begin, select a difficulty by pressing either 1, 2, or 3 on your keyboard. Use the WASD or arrow keys to control the ship and space to fire. The objective of this game is to clear the screen of all the aliens, and once that is complete, you will level up. As you progress, the amount of time you have to complete each level decreases.
+
+![image](https://user-images.githubusercontent.com/67216058/148602901-f0ff2d2b-e626-47a1-a2e0-1d627db4ef34.png)
+
+
 ## Background
 ![Capture](https://user-images.githubusercontent.com/67216058/148125948-3f45b715-d9ca-4a3f-90a9-69f2e4dc3fe5.PNG)
 #### This class had code that relates to the background of the game. It had 2 methods that changed the background each stage and resetted the background to the first index.
