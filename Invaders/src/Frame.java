@@ -294,7 +294,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			
 		}
 	}
-
+	// end part 1
 	
 	//painting enemy1 + bullet and checking if hit by player bullet
 	public void paint1(Graphics g) {
@@ -392,7 +392,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		catch (IndexOutOfBoundsException e) {}
-		// end part 1
 	}
 	//checking if all enemies are gone
 	public boolean stageClear() {
@@ -542,6 +541,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		
 	}
 
 	@Override
