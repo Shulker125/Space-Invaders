@@ -39,7 +39,7 @@
 ![image](https://user-images.githubusercontent.com/78383186/148125998-edc0591e-c845-455d-aedf-3c784546712b.png)    
 #### The if loop here moves all of the objects in the game.
 ![image](https://user-images.githubusercontent.com/78383186/148126055-8a6afd45-0a6d-4e04-959b-ac49fd82cf83.png)   
-#### This code moves the player from left ro right.
+#### This code moves the player from left to right.
 ![image](https://user-images.githubusercontent.com/78383186/148126113-eec959c7-2ab9-4fbd-8b6b-a7eb7107397f.png)    
 #### Here is where the program sets the difficulty when the user inputs a key.
 ![image](https://user-images.githubusercontent.com/78383186/148126151-3ccce086-72c7-4fdc-8c3f-8169780e001b.png)    
