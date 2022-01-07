@@ -10,9 +10,6 @@
 ![image](https://user-images.githubusercontent.com/67216058/148602901-f0ff2d2b-e626-47a1-a2e0-1d627db4ef34.png)
 ![image](https://user-images.githubusercontent.com/67216058/148603150-0ceb355d-5acb-4b39-9d4a-3316ac604c43.png)
 
-## Gameplay
-https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-b48d-632e983a690d.mp4
-
 ## Characters
 ![image](https://user-images.githubusercontent.com/67216058/148603758-5bb4cf0f-d0ed-40c7-bcd7-8df9cc89a923.png)
 ![image](https://user-images.githubusercontent.com/67216058/148604110-4f4d6a63-6d8d-4b6d-a8cb-af83a0276a77.png)
@@ -22,6 +19,9 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 
 ![image](https://user-images.githubusercontent.com/67216058/148604429-e2780bc1-b78e-41b5-8e0d-9ec58ddb29b2.png)
 ### This is your last remaining ship, will all the survivors from your colony. You need to steer to avoid the bombs and take your passengers to safety.
+
+## Gameplay
+https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-b48d-632e983a690d.mp4
 
 
 ## Frame
