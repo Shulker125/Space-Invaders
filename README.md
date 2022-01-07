@@ -20,6 +20,8 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 ![image](https://user-images.githubusercontent.com/67216058/148604256-1cd68823-77a1-456a-9374-22514dd8d1e0.png)
 ### These are the aliens. After the collapse of your colony, these aliens are invading your world to collect your remaining resources. Your job is to destroy them.
 
+![image](https://user-images.githubusercontent.com/67216058/148604429-e2780bc1-b78e-41b5-8e0d-9ec58ddb29b2.png)
+### This is your last remaining ship, will all the survivors from your colony. You need to steer to avoid the bombs and take your passengers to safety.
 
 
 ## Frame
