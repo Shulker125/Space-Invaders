@@ -62,4 +62,4 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 #### These 3 methods each change certain variables for the difficulty. 
 
 ## Authors and Acknowledgment
-Music is used from YouTube. All images and backgrounds are created by us. All code is original. Special thanks to Mr. David for guidence and support. This game is inspired by Galaga and Space Invaders.
+This game has been created by Krish Shah and Zayne Hussain. Music is used from YouTube. All images and backgrounds are created by us. All code is original. Special thanks to Mr. David for guidence and support. This game is inspired by Galaga and Space Invaders.
