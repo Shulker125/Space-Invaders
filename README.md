@@ -60,3 +60,6 @@ https://user-images.githubusercontent.com/78383186/148603002-b7068385-8e32-4dc1-
 #### The first method displays the stage number. The next method calculates the amount of bullets the enemies fire.
 ![image](https://user-images.githubusercontent.com/78383186/148126456-b336343d-f476-4807-a4f4-34fde69d43d1.png)    
 #### These 3 methods each change certain variables for the difficulty. 
+
+## Authors and Acknowledgment
+This game has been created by Krish Shah and Zayne Hussain. Music is used from YouTube. All images and backgrounds are created by us. All code is original. Special thanks to Mr. David for guidence and support. This game is inspired by Galaga and Space Invaders.
