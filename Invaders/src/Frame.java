@@ -20,7 +20,25 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 // 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
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
-	
+	/* comments
+	 * unusually fun, good job 
+	 * really cool sounds and fun
+	 * really fun!
+	 * the stages are cool 
+	 * Super fun! got to stage 7, cant wait to play again on the next station
+	 * fun game, the stages are interesting
+	 * really fun, I like the sound effects and design
+	 * very cool very addicting great game!
+	 * a bit slow -- nice overall
+	 * a bit slow, but fun
+ 	 * very cool :)
+	 * super well made and fun!
+	 * good gameplay and graphics
+	 * very nice.
+	 * nice graphics
+	 * col
+	 * very fun
+	 */
 	//Objects
 	Background 	bg 	= new Background(0, 0);
 	Player player = new Player(155, 400);
