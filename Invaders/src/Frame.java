@@ -39,7 +39,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	 * col
 	 * very fun
 	 */
-	//Objects
+	//Objects 
 	Background 	bg 	= new Background(0, 0);
 	Player player = new Player(155, 400);
 	Title title = new Title(15, 100);
